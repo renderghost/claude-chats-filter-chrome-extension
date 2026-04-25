@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Chats Project Filter",
+  "version": "1.0.0",
+  "description": "Filter Claude chats by project on the /recents page.",
+  "permissions": ["webRequest"],
+  "host_permissions": ["https://claude.ai/*"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/recents*"],
+      "js": ["src/api.js", "src/ui.js", "src/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
